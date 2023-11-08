@@ -34,14 +34,34 @@ list_of_names = []
 my_dict = {'NumberOfRooms': [], 'Size': [], 'ConstructionDate': [], 'NumberOfLevels': [], 'NumberOfBathrooms': [],
            'NumberOfWc': [], 'Latitude': [], 'Longitude': [], 'TypeId': [], 'SubTypeId': [], 'ActionId': [],
            'HeatingTypeId': [], 'BasicHeatingTypeId': [], 'FloorLevelId': [], 'DistanceFromCoast': []}
+
+my_new_dict = my_dict
 for i, value in enumerate(coefs):
   if value != 0:
     print("feature:", names[i] , "with value:", value)
-    list_of_features.append(value)
-    list_of_names.append(names[i])
+    # list_of_features.append(value)
+    # list_of_names.append(names[i])
     my_dict[names[i]].append(value)
-print("list of features (values):", sorted(list_of_features, reverse=True))
-print("list of names:", list_of_names)
+# print("list of features (values):", sorted(list_of_features, reverse=True))
+# print("list of names:", list_of_names)
 print(my_dict)
-sorted_dict = sorted(my_dict.items(), lambda x:x[1])
-print(sorted_dict)
+
+my_new_dict = {k: v for k,v in my_new_dict.items() if v}
+print(my_new_dict)
+
+# sorted_dict = sorted(my_dict.items(), lambda x:x[1])
+# print(sorted_dict)
+
+# Sort the items (key-value pairs) in the dictionary 'd' based on the values (1st element of each pair).
+# The result is a list of sorted key-value pairs.
+sorted_my_new_dict = sorted(my_new_dict.items(), key=operator.itemgetter(1))
+
+# Print the dictionary 'sorted_d' in ascending order by value.
+print('Dictionary in ascending order by value : ', sorted_my_new_dict)
+
+# Convert the sorted list of key-value pairs back into a dictionary.
+# The 'reverse=True' argument sorts the list in descending order by value.
+sorted_my_new_dict = dict( sorted(my_new_dict.items(), key=operator.itemgetter(1), reverse=True))
+
+# Print the dictionary 'sorted_d' in descending order by value.
+print('Dictionary in descending order by value : ', sorted_my_new_dict)
