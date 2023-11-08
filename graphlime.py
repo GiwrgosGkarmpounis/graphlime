@@ -31,17 +31,19 @@ print("All the features influencing this node are ", res_list)
 
 list_of_features = []
 list_of_names = []
-my_dict = {'NumberOfRooms': [], 'Size': [], 'ConstructionDate': [], 'NumberOfLevels': [], 'NumberOfBathrooms': [],
-           'NumberOfWc': [], 'Latitude': [], 'Longitude': [], 'TypeId': [], 'SubTypeId': [], 'ActionId': [],
-           'HeatingTypeId': [], 'BasicHeatingTypeId': [], 'FloorLevelId': [], 'DistanceFromCoast': []}
+# my_dict = {'NumberOfRooms': [], 'Size': [], 'ConstructionDate': [], 'NumberOfLevels': [], 'NumberOfBathrooms': [],
+#            'NumberOfWc': [], 'Latitude': [], 'Longitude': [], 'TypeId': [], 'SubTypeId': [], 'ActionId': [],
+#            'HeatingTypeId': [], 'BasicHeatingTypeId': [], 'FloorLevelId': [], 'DistanceFromCoast': []}
 
+keys = list(names)
+my_dict = dict(zip(keys, [[]]*len(keys)))
 my_new_dict = my_dict
 for i, value in enumerate(coefs):
-  if value != 0:
-    print("feature:", names[i] , "with value:", value)
-    # list_of_features.append(value)
-    # list_of_names.append(names[i])
-    my_dict[names[i]].append(value)
+    if value != 0:
+        print("feature:", names[i] , "with value:", value)
+        # list_of_features.append(value)
+        # list_of_names.append(names[i])
+        my_dict[names[i]] = value
 # print("list of features (values):", sorted(list_of_features, reverse=True))
 # print("list of names:", list_of_names)
 print(my_dict)
